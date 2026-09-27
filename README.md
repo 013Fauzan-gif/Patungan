@@ -2,6 +2,10 @@
 
 Kalkulator bagi tagihan untuk makan bareng, nongkrong, atau perjalanan. Masukkan siapa yang ikut dan harga tiap item, lalu lihat berapa yang harus dibayar masing-masing — termasuk pajak dan biaya layanan.
 
+## Tampilan
+
+![Tampilan aplikasi Patungan](tampilan.png)
+
 ## Fitur
 
 - Tambah peserta dan item tagihan
