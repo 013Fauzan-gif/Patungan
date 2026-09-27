@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patungan — Bagi Tagihan</title>
+    <meta name="description" content="Kalkulator sederhana untuk membagi tagihan makan, nongkrong, atau perjalanan.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤝</text></svg>">
+</head>
+<body>
+    <main class="app">
+        <header class="hero">
+            <p class="eyebrow">Kalkulator patungan</p>
+            <h1>Patungan</h1>
+            <p class="subtitle">Bagi tagihan makan, nongkrong, atau perjalanan. Pajak dan biaya layanan ikut terhitung.</p>
+        </header>
+
+        <div class="workspace">
+            <div class="column">
+                <section class="card" aria-labelledby="people-heading">
+                    <div class="card-head">
+                        <h2 id="people-heading">Siapa yang ikut?</h2>
+                        <p>Tambahkan nama orang yang akan berbagi tagihan.</p>
+                    </div>
+                    <form id="person-form" class="inline-form">
+                        <label class="sr-only" for="person-name">Nama peserta</label>
+                        <input id="person-name" type="text" maxlength="24" placeholder="Nama, misalnya Raka" autocomplete="off">
+                        <button type="submit" class="btn btn-primary">Tambah</button>
+                    </form>
+                    <p id="person-message" class="message" role="status"></p>
+                    <ul id="people-list" class="people-list"></ul>
+                </section>
+
+                <section class="card" aria-labelledby="items-heading">
+                    <div class="card-head">
+                        <h2 id="items-heading">Daftar tagihan</h2>
+                        <p>Pilih siapa saja yang ikut membayar tiap item.</p>
+                    </div>
+                    <form id="item-form" class="item-form">
+                        <div class="item-fields">
+                            <div class="field">
+                                <label for="item-name">Item</label>
+                                <input id="item-name" type="text" maxlength="40" placeholder="Nama item" autocomplete="off">
+                            </div>
+                            <div class="field">
+                                <label for="item-amount">Harga (Rp)</label>
+                                <input id="item-amount" type="number" min="1" step="1" placeholder="25000" inputmode="numeric">
+                            </div>
+                        </div>
+                        <fieldset class="split-picker">
+                            <legend>Dibagi ke</legend>
+                            <div id="split-options" class="split-options"></div>
+                        </fieldset>
+                        <p id="item-message" class="message" role="status"></p>
+                        <button type="submit" class="btn btn-primary" id="add-item-btn">Tambah item</button>
+                    </form>
+                    <ul id="item-list" class="item-list"></ul>
+                </section>
+
+                <section class="card" aria-labelledby="extra-heading">
+                    <div class="card-head">
+                        <h2 id="extra-heading">Tambahan</h2>
+                        <p>Kosongkan atau isi 0 kalau tidak ada.</p>
+                    </div>
+                    <div class="extra-grid">
+                        <div class="field">
+                            <label for="tax-percent">Pajak (%)</label>
+                            <input id="tax-percent" type="number" min="0" max="100" step="0.1" value="0">
+                        </div>
+                        <div class="field">
+                            <label for="service-percent">Biaya layanan (%)</label>
+                            <input id="service-percent" type="number" min="0" max="100" step="0.1" value="0">
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <aside class="receipt" aria-labelledby="receipt-heading">
+                <div class="receipt-top">
+                    <p class="receipt-brand">STRUK PATUNGAN</p>
+                    <h2 id="receipt-heading">Ringkasan</h2>
+                </div>
+                <div id="receipt-body"></div>
+                <div class="receipt-actions">
+                    <button type="button" class="btn btn-primary" id="copy-btn">Salin ringkasan</button>
+                    <button type="button" class="btn btn-ghost" id="reset-btn">Mulai ulang</button>
+                </div>
+                <p class="footnote">Angka dibulatkan ke rupiah dan tetap berjumlah pas. Data hanya tersimpan di browser ini.</p>
+            </aside>
+        </div>
+    </main>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <script src="script.js"></script>
+</body>
+</html>
